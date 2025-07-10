@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart – Hammer Bash Max</title>
+    <link rel="stylesheet" href="cart.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">🎧 Hammer</div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="checkout.html">Checkout</a>
+        <button id="darkToggle" class="dark-toggle" title="Toggle Dark Mode">
+          🌙
+        </button>
+      </nav>
+    </header>
+
+    <main class="cart-page">
+      <div class="cart-content">
+        <!-- Product Section -->
+        <div class="cart-item">
+          <img
+            src="images/headphone2.jpg"
+            alt="Hammer Bash Max"
+            class="product-image"
+          />
+          <div class="details">
+            <h2>Hammer Bash Max</h2>
+            <p class="unit-price">Unit Price: ₹4,999</p>
+
+            <div class="quantity-box">
+              <button class="qty-btn" onclick="changeQty(-1)">−</button>
+              <input type="number" id="qty" value="1" min="1" readonly />
+              <button class="qty-btn" onclick="changeQty(1)">+</button>
+            </div>
+
+            <p id="total-price" class="total-price">Total: ₹4,999</p>
+            <button class="remove-btn" onclick="removeItem()">
+              🗑 Remove Item
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary Section -->
+      <aside class="summary">
+        <h3>Order Summary</h3>
+        <p>Subtotal: <span id="summary-subtotal">₹4,999</span></p>
+        <p>Shipping: <span id="shipping-charge">₹100</span></p>
+
+        <hr />
+        <p class="grand-total">
+          Total: <strong id="summary-total">₹4,999</strong>
+        </p>
+        <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+      </aside>
+    </main>
+
+    <script>
+      const qtyInput = document.getElementById("qty");
+      const totalPrice = document.getElementById("total-price");
+      const summarySubtotal = document.getElementById("summary-subtotal");
+      const summaryTotal = document.getElementById("summary-total");
+      const unitPrice = 4999;
+
+      function changeQty(amount) {
+        let qty = parseInt(qtyInput.value);
+        qty = Math.max(1, qty + amount);
+        qtyInput.value = qty;
+
+        const productTotal = unitPrice * qty;
+        const shipping = qty === 1 ? 100 : 0;
+        const grandTotal = productTotal + shipping;
+
+        totalPrice.innerText = `Total: ₹${productTotal}`;
+        summarySubtotal.innerText = `₹${productTotal}`;
+        summaryTotal.innerText = `₹${grandTotal}`;
+        document.getElementById("shipping-charge").innerText =
+          shipping === 0 ? "Free" : `₹${shipping}`;
+      }
+
+      function removeItem() {
+        document.querySelector(".cart-item").remove();
+        document.querySelector(".summary").innerHTML =
+          "<p>Your cart is empty.</p>";
+      }
+
+      const toggle = document.getElementById("darkToggle");
+      const body = document.body;
+
+      // Load preference
+      if (localStorage.getItem("darkMode") === "enabled") {
+        body.classList.add("dark-mode");
+        toggle.textContent = "☀️";
+      }
+
+      toggle.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        const isDark = body.classList.contains("dark-mode");
+        toggle.textContent = isDark ? "☀️" : "🌙";
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      });
+
+      changeQty(0);
+    </script>
+  </body>
+</html>

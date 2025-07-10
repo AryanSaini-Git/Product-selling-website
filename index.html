@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hammer Bash Max - Premium Wireless Headphones</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="thankyou-banner" class="thankyou-banner" style="display: none">
+      🎉 Thank you for shopping with us at Hammer Bash Max!
+    </div>
+
+    <!-- Header -->
+    <header class="navbar">
+      <div class="logo">🎧 Hammer</div>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#buy">Buy Now</a>
+      </nav>
+      <button id="darkToggle" class="dark-toggle" title="Toggle Dark Mode">
+        🌙
+      </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Introducing Hammer Bash Max</h1>
+        <p>
+          Crystal clear sound and Deep Bass. Noise cancellation. 40-hour
+          battery. Built for audiophiles and casual listeners alike.
+        </p>
+        <a href="#buy" class="btn">Buy Now – ₹4,999</a>
+      </div>
+      <div class="hero-image">
+        <img src="images/headphone1.jpg" alt="Hammer Bash Max" />
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <h2>Why Choose X1?</h2>
+      <ul>
+        <li class="feature-item">🎵 High-fidelity 50mm drivers</li>
+        <li class="feature-item">🔇 Active Noise Cancellation</li>
+        <li class="feature-item">🔋 40 Hours Battery Life</li>
+        <li class="feature-item">📶 Bluetooth 5.2 with Quick Pair</li>
+        <li class="feature-item">🎙️ Built-in Mic for Calls & Gaming</li>
+        ...
+      </ul>
+    </section>
+
+    <!-- Gallery / Lifestyle Image -->
+    <section class="gallery">
+      <img src="images/lifestyle-headphone.jpeg" alt="Headphones Lifestyle" />
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews" id="reviews">
+      <h2>What Customers Say</h2>
+      <div class="review-grid">
+        <div class="review-card">
+          <p>⭐️⭐️⭐️⭐️⭐️</p>
+          <p>“Absolutely amazing sound quality. Best headphones under 5K!”</p>
+          <h4>- Priya S.</h4>
+        </div>
+        <div class="review-card">
+          <p>⭐️⭐️⭐️⭐️</p>
+          <p>“Comfortable and premium feel. Battery lasts forever.”</p>
+          <h4>- Ankit M.</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buy Now -->
+    <section class="buy-section" id="buy">
+      <h2>Buy Hammer Bash Max</h2>
+      <p>Only ₹4,999 | Free shipping | 7-day replacement guarantee</p>
+      <a href="cart.html" class="btn buy-btn">Buy Now – ₹4,999</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 Hammer. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+    </footer>
+
+    <script>
+      function addToCart(name, price) {
+        alert(name + " added to cart for ₹" + price);
+      }
+
+      const features = document.querySelectorAll(".feature-item");
+      window.addEventListener("scroll", () => {
+        features.forEach((item) => {
+          const rect = item.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 100) {
+            item.classList.add("visible");
+          }
+        });
+      });
+      const toggle = document.getElementById("darkToggle");
+      const body = document.body;
+
+      // Load saved theme
+      if (localStorage.getItem("darkMode") === "enabled") {
+        body.classList.add("dark-mode");
+        toggle.textContent = "☀️";
+      }
+
+      toggle.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        const enabled = body.classList.contains("dark-mode");
+        toggle.textContent = enabled ? "☀️" : "🌙";
+        localStorage.setItem("darkMode", enabled ? "enabled" : "disabled");
+      });
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const banner = document.getElementById("thankyou-banner");
+        if (localStorage.getItem("thankYou") === "true") {
+          banner.style.display = "block";
+          localStorage.removeItem("thankYou");
+
+          // Auto-hide after 5 seconds
+          setTimeout(() => {
+            banner.style.display = "none";
+          }, 5000);
+        }
+      });
+    </script>
+  </body>
+</html>

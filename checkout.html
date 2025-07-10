@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout – Hammer Bash Max</title>
+    <link rel="stylesheet" href="checkout.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">🎧 Hammer</div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart</a>
+        <button id="darkToggle" class="dark-toggle" title="Toggle Dark Mode">
+          🌙
+        </button>
+      </nav>
+    </header>
+
+    <main class="checkout-page">
+      <div class="form-section">
+        <h1>Checkout</h1>
+        <form class="checkout-form">
+          <h2>Billing & Shipping Info</h2>
+
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="John Doe" required />
+
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="john@example.com"
+            required
+          />
+
+          <label for="address">Address</label>
+          <textarea
+            id="address"
+            placeholder="Street, City, ZIP"
+            required
+          ></textarea>
+
+          <h2>Payment Details</h2>
+
+          <label for="card">Card Number</label>
+          <input
+            type="text"
+            id="card"
+            placeholder="1234 5678 9012 3456"
+            required
+          />
+
+          <div class="row">
+            <div>
+              <label for="expiry">Expiry</label>
+              <input type="text" id="expiry" placeholder="MM/YY" required />
+            </div>
+            <div>
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" placeholder="123" required />
+            </div>
+          </div>
+
+          <button type="submit" class="btn">Place Order</button>
+          <p class="secure">🔒 100% Secure & Encrypted Payment</p>
+        </form>
+      </div>
+
+      <aside class="summary">
+        <h3>Order Summary</h3>
+        <div class="product-box">
+          <img src="images/headphone_clean.png" alt="Hammer Bash Max" />
+          <div>
+            <p><strong>Hammer Bash Max</strong></p>
+            <p>Qty: 1</p>
+            <p>Price: ₹4,999</p>
+          </div>
+        </div>
+        <hr />
+        <p>Shipping: ₹100</p>
+        <p class="total">Total: ₹5,099</p>
+      </aside>
+    </main>
+
+    <script>
+      // Dark Mode Toggle (unchanged)
+      const toggle = document.getElementById("darkToggle");
+      const body = document.body;
+
+      if (localStorage.getItem("darkMode") === "enabled") {
+        body.classList.add("dark-mode");
+        toggle.textContent = "☀️";
+      }
+
+      toggle.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        const isDark = body.classList.contains("dark-mode");
+        toggle.textContent = isDark ? "☀️" : "🌙";
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      });
+
+      // On order place
+      document
+        .querySelector(".checkout-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          localStorage.setItem("thankYou", "true");
+          window.location.href = "index.html";
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,252 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f6fb;
+  color: #333;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1f2e;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Logo on left */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+}
+
+.nav-links a, .dark-toggle {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Centered nav links */
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav-center a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/* Dark mode toggle aligned right */
+.dark-toggle {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+/* Responsive mobile/tablet layout */
+@media (max-width: 768px) {
+  .dark-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background-color: #7f5af0;
+    color: white;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .navbar {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .logo {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-center {
+    flex: none;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* Default style: inline with navbar on desktop */
+.dark-toggle {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: white;
+  margin-left: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+/* Reposition on smaller screens */
+@media (max-width: 768px) {
+  .dark-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background-color: #7f5af0;
+    color: white;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .dark-toggle:hover {
+    transform: scale(1.1);
+  }
+}
+
+
+.checkout-page {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.form-section {
+  flex: 2;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.checkout-form h2 {
+  margin-top: 2rem;
+}
+
+.checkout-form label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.checkout-form textarea {
+  resize: vertical;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+}
+
+.row div {
+  flex: 1;
+}
+
+.btn {
+  margin-top: 2rem;
+  background-color: #7f5af0;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #674de0;
+}
+
+.secure {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.summary {
+  flex: 1;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  height: fit-content;
+}
+
+.product-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.product-box img {
+  width: 70px;
+  border-radius: 8px;
+}
+
+.summary hr {
+  margin: 1rem 0;
+}
+
+.total {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #12121a;
+  color: #e0e0e0;
+}
+
+.dark-mode .navbar {
+  background: #181828;
+}
+
+.dark-mode .form-section,
+.dark-mode .summary {
+  background-color: #222233;
+  box-shadow: 0 4px 20px rgba(255,255,255,0.05);
+}
+
+.dark-mode input,
+.dark-mode textarea {
+  background: #2d2d40;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.dark-mode .btn {
+  background-color: #9f7afa;
+}
+
+.dark-mode .btn:hover {
+  background-color: #8457e0;
+}
